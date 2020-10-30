@@ -9,12 +9,17 @@ import 'package:http/http.dart' as http;
 void main() {
   runApp(
     MaterialApp(
+      
         debugShowCheckedModeBanner: false,
         title: "COVID-19 Tracker",
         initialRoute: "/",
+        
         routes: {
-          "/": (context) => HomePage(),
+          "/": (context) => SplashScree(),
           "/covid": (context) => CovidApp(),
+          "/home":(context)=> HomePage(),
+          
+
         }),
   );
 }
@@ -30,7 +35,7 @@ class _CovidAppState extends State<CovidApp> {
   bool loading = true;
   List lsCountry;
 
-  Future<String> _getWorldData() async {
+  Future <String> _getWorldData() async {
     var response = await http.get('https://brp.com.np/covid/country.php');
     var getData = json.decode(response.body);
     if (this.mounted) {
@@ -52,14 +57,13 @@ class _CovidAppState extends State<CovidApp> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.blue[700]);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.blueAccent[400]);
     return Scaffold(
       appBar: AppBar(
-         shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(20),),
-        backgroundColor: Colors.blue[700],
+         
+        backgroundColor: Colors.blueAccent[400],
         title: Text(
-          "COVID-19 Tracker",
+          "Regional Statistics",
           style: GoogleFonts.pacifico(),
         ),
         actions: [
@@ -71,11 +75,14 @@ class _CovidAppState extends State<CovidApp> {
         ],
       ),
       body: ListView(
+        
         padding: EdgeInsets.all(5),
         children: [
+          
           loading
-              ? Center(child: CircularProgressIndicator())
+              ?Center(child: CircularProgressIndicator())
               : ListView.builder(
+                
                   itemBuilder: (context, i) {
                     return listItems(i);
                   },
@@ -84,6 +91,7 @@ class _CovidAppState extends State<CovidApp> {
                   itemCount: lsCountry == null
                       ? 0
                       : lsCountry[0]["countries_stat"].length,
+                  
                 )
         ],
       ),
@@ -98,13 +106,22 @@ class _CovidAppState extends State<CovidApp> {
               style:
                   GoogleFonts.actor(fontSize: 20, fontWeight: FontWeight.bold)),
         ),
-        Card(
-          elevation: 5,
-          child: Row(
+        Row(
             children: [
               Expanded(
                 child: Container(
-                    color: Colors.blueAccent[200],
+                  margin: EdgeInsets.all(5),
+                    decoration: new BoxDecoration(
+                            color: Colors.purple,
+                         
+                      
+                            gradient: new LinearGradient(
+                              colors: [
+                                Colors.red[200],
+                                Colors.red,
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -119,7 +136,18 @@ class _CovidAppState extends State<CovidApp> {
               ),
               Expanded(
                 child: Container(
-                    color: Colors.greenAccent,
+                  margin: EdgeInsets.all(5),
+                    decoration: new BoxDecoration(
+                            color: Colors.purple,
+                            
+                     
+                            gradient: new LinearGradient(
+                              colors: [
+                                Colors.green[200],
+                                Colors.greenAccent[700]
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -136,7 +164,17 @@ class _CovidAppState extends State<CovidApp> {
               ),
               Expanded(
                 child: Container(
-                    color: Colors.redAccent,
+                  margin: EdgeInsets.all(5),
+                    decoration: new BoxDecoration(
+                       
+                            color: Colors.purple,
+                            gradient: new LinearGradient(
+                              colors: [
+                                Colors.grey[350],
+                                Colors.grey[700]
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -150,15 +188,23 @@ class _CovidAppState extends State<CovidApp> {
                     )),
               ),
             ],
-          ),
+          
         ),
-        Card(
-          elevation: 5,
-          child: Row(
+        Row(
             children: [
               Expanded(
                 child: Container(
-                    color: Colors.blueAccent[100],
+                  margin: EdgeInsets.all(5),
+                     decoration: new BoxDecoration(
+                            color: Colors.purple,
+                            
+                            gradient: new LinearGradient(
+                              colors: [
+                                Colors.red[100],
+                                Colors.redAccent[100],
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -173,7 +219,17 @@ class _CovidAppState extends State<CovidApp> {
               ),
               Expanded(
                 child: Container(
-                    color: Colors.redAccent[100],
+                  margin: EdgeInsets.all(5),
+                    decoration: new BoxDecoration(
+                          
+                            color: Colors.purple,
+                            gradient: new LinearGradient(
+                              colors: [
+                                Colors.grey[350],
+                                Colors.grey[700]
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20)),
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
@@ -188,7 +244,7 @@ class _CovidAppState extends State<CovidApp> {
               ),
             ],
           ),
-        ),
+        
       ],
     );
   }
