@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "33719816196",
+    "firebase_url": "https://covid19-74e91.firebaseio.com",
+    "project_id": "covid19-74e91",
+    "storage_bucket": "covid19-74e91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33719816196:android:d712f9826e647056ae2551",
+        "android_client_info": {
+          "package_name": "com.shahsamkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33719816196-fioqdpo8nv4mk039su6f50cd2vt5ked5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzAxA8-_wZWJXitQ6Qw_BbMunji3ZlMFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33719816196-fioqdpo8nv4mk039su6f50cd2vt5ked5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

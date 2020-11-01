@@ -1,11 +1,16 @@
 import 'dart:convert';
 
-import 'package:covid_tracker/utils.dart';
+import 'package:covid19/getstart.dart';
+import 'package:covid19/utils.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:http/http.dart' as http;
+
+import 'Animation/FadeAnimation.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -36,9 +41,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.blueAccent[400]);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.indigo);
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: Colors.white,
       
       appBar: AppBar(
         elevation: 0,
@@ -53,19 +58,19 @@ class _HomePageState extends State<HomePage> {
                 globalData();
               })
         ],
-        backgroundColor: Colors.blueAccent[400],
+        backgroundColor: Colors.indigo,
       ),
-      body: SingleChildScrollView(
+      body: FadeAnimation(1.7,SingleChildScrollView(
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
             Container(
                 height: 205,
                 decoration: new BoxDecoration(
-                    color: Colors.blueAccent[400],
+                    color: Colors.indigo,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.blueAccent[400],
+                        color: Colors.black,
                         blurRadius: 10,
                         spreadRadius: 1,
                       )
@@ -154,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     child: RaisedButton(
-                      color: Colors.greenAccent[400],
+                      color: Colors.blueAccent[400],
                       child: Row(
                         children: [
                           Icon(
@@ -203,18 +208,18 @@ class _HomePageState extends State<HomePage> {
                         padding: EdgeInsets.symmetric(vertical: 20),
                         height: 80,
                         decoration: new BoxDecoration(
-                            color: Colors.purple,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.red,
-                                blurRadius: 5,
-                                spreadRadius: 1,
+                                color: Colors.grey[300],
+                                blurRadius: 1,
+                                spreadRadius: 0,
+                                offset: Offset(0,5)
                               )
                             ],
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.red[100],
-                                Colors.redAccent[100],
+                                Colors.red[50],
+                                Colors.red[200],
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20)),
@@ -223,10 +228,11 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "Total Cases",
-                              style: GoogleFonts.pacifico(color: Colors.red[900])
+                              style: GoogleFonts.capriola(color: Colors.red [900])
                             ),
-                            Text(getData['cases'].toString() ?? "...", style: TextStyle(color: Colors.red[900])
-                            ),
+                            Text("45995629", style: GoogleFonts.capriola(color:Colors.red[700]),)
+                            // Text(getData['cases'].toString() ?? "...", style: TextStyle(color: Colors.red[900])
+                            // ),
                           ],
                         )),
                     Container(
@@ -236,25 +242,27 @@ class _HomePageState extends State<HomePage> {
                         decoration: new BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.blueAccent[400],
-                                blurRadius: 5,
-                                spreadRadius: 1,
+                               color: Colors.grey[300],
+                                blurRadius: 1,
+                                spreadRadius: 0,
+                                offset: Offset(0,5)
                               )
                             ],
                             color: Colors.purple,
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.blue[100],
-                                Colors.blueAccent[100]
+                                Colors.blue[50],
+                                Colors.blue[400],
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20)),
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Column(
                           children: [
-                            Text("Active Cases", style: GoogleFonts.pacifico(color: Colors.blue[900])),
-                             Text(getData['active'].toString() ?? "...",style: TextStyle(color: Colors.blue[900])
-                            ),
+                            Text("Active Cases", style: GoogleFonts.capriola(color: Colors.blue[900])),
+                            Text("11509610",style: GoogleFonts.capriola(color: Colors.blue[700]))
+                            //  Text(getData['active'].toString() ?? "...",style: TextStyle(color: Colors.blue[900])
+                            // ),
                           ],
                         )),
                     Container(
@@ -263,15 +271,16 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.purple,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.green,
-                                blurRadius: 5,
-                                spreadRadius: 1,
+                                color: Colors.grey[300],
+                                blurRadius: 1,
+                                spreadRadius: 0,
+                                offset: Offset(0,5)
                               )
                             ],
                             gradient: new LinearGradient(
                               colors: [
-                                Colors.green[100],
-                                Colors.greenAccent[100]
+                             Colors.green[50],
+                                Colors.green[400],
                               ],
                             ),
                             borderRadius: BorderRadius.circular(20)),
@@ -280,9 +289,10 @@ class _HomePageState extends State<HomePage> {
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Column(
                           children: [
-                            Text("Recoveries", style: GoogleFonts.pacifico(color: Colors.green[900])),
-                            Text(getData['recovered'].toString() ?? "...",style: TextStyle(color: Colors.green[900])
-                            ),
+                            Text("Recoveries", style: GoogleFonts.capriola(color: Colors.green[900])),
+                            Text("33290959",style: GoogleFonts.capriola(color: Colors.green[700]))
+                            // Text(getData['recovered'].toString() ?? "...",style: TextStyle(color: Colors.green[900])
+                            // ),
                           ],
                         )),
                     Container(
@@ -292,22 +302,24 @@ class _HomePageState extends State<HomePage> {
                         decoration: new BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey[700],
-                                blurRadius: 5,
-                                spreadRadius: 1,
+                              color: Colors.grey[300],
+                                blurRadius: 1,
+                                spreadRadius: 0,
+                                offset: Offset(0,5)
                               )
                             ],
                             color: Colors.purple,
                             gradient: new LinearGradient(
-                              colors: [Colors.grey[350], Colors.grey[400]],
+                              colors: [Colors.grey[100], Colors.grey],
                             ),
                             borderRadius: BorderRadius.circular(20)),
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Column(
                           children: [
-                            Text("Deaths", style: GoogleFonts.pacifico()),
-                            Text(getData['deaths'].toString() ?? "...",
-                            ),
+                            Text("Deaths", style: GoogleFonts.capriola(color: Colors.grey[900])),
+                            Text("1195063", style: GoogleFonts.capriola(color: Colors.grey[800]))
+                            // Text(getData['deaths'].toString() ?? "...",
+                            // ),
                           ],
                         ))
                   ],
@@ -372,9 +384,8 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(5),
                     height: MediaQuery.of(context).size.height * 0.16,
                     decoration: new BoxDecoration(
-                        color: Colors.purple,
                         gradient: new LinearGradient(
-                          colors: [Colors.blue[100], Colors.blueAccent[400]],
+                          colors: [Colors.indigo[100], Colors.indigo],
                         ),
                         borderRadius: BorderRadius.circular(20)),
                     child: Row(
@@ -414,7 +425,7 @@ class _HomePageState extends State<HomePage> {
                   decoration: new BoxDecoration(
                       color: Colors.purple,
                       gradient: new LinearGradient(
-                        colors: [Colors.greenAccent[100], Colors.blueAccent[400]],
+                        colors: [Colors.indigo[100], Colors.indigo],
                       ),
                       borderRadius: BorderRadius.circular(20)),
                   child: Row(
@@ -447,6 +458,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -465,16 +477,16 @@ class _SplashScreeState extends State<SplashScree> {
   Widget build(BuildContext context) {
     return new SplashScreen(
       title: new Text('COVID-19 Tracker',
-          style: GoogleFonts.pacifico(fontSize: 25)),
-      seconds: 2,
+          style: GoogleFonts.capriola(fontSize: 25)),
+      seconds: 3,
       image: new Image.asset('images/splash.gif'),
       backgroundColor: Colors.white,
-      navigateAfterSeconds: HomePage(),
+      navigateAfterSeconds: GetStarted(),
       styleTextUnderTheLoader: new TextStyle(),
       photoSize: 160.0,
-      loaderColor: Colors.blue.shade900,
+      loaderColor: Colors.blue[900],
       loadingText: Text("Be Safe, Take care of your family",
-          style: GoogleFonts.pacifico(color: Colors.blue[900])),
+          style: GoogleFonts.capriola(color: Colors.blue[900])),
     );
   }
 }

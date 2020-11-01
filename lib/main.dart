@@ -1,6 +1,9 @@
 import 'dart:convert';
 
-import 'package:covid_tracker/home.dart';
+
+import 'package:covid19/getstart.dart';
+import 'package:covid19/home.dart';
+import 'package:covid19/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +21,9 @@ void main() {
           "/": (context) => SplashScree(),
           "/covid": (context) => CovidApp(),
           "/home":(context)=> HomePage(),
-          
+          "/start":(context)=> GetStarted(),
+          "/register":(context)=>RegisterPage(),
+   
 
         }),
   );
@@ -57,14 +62,15 @@ class _CovidAppState extends State<CovidApp> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.blueAccent[400]);
+    FlutterStatusbarcolor.setStatusBarColor(Colors.indigo);
     return Scaffold(
+      backgroundColor: Colors.indigo[100],
       appBar: AppBar(
          
-        backgroundColor: Colors.blueAccent[400],
+        backgroundColor: Colors.indigo,
         title: Text(
           "Regional Statistics",
-          style: GoogleFonts.pacifico(),
+          style: GoogleFonts.capriola(),
         ),
         actions: [
           IconButton(
