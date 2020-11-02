@@ -11,7 +11,7 @@
 5.Future Scope: People can use this application until COVID ends.
 
 ![image](https://user-images.githubusercontent.com/56602504/97829013-af133d80-1cee-11eb-861a-595288d80974.png)
-![image](https://user-images.githubusercontent.com/56602504/97829045-c7835800-1cee-11eb-9e87-7096a027ebe1.png)
-![image](https://user-images.githubusercontent.com/56602504/97829064-cfdb9300-1cee-11eb-9bde-5b577a9fa55c.png)
+![image](https://user-images.githubusercontent.com/56602504/97829125-0b765d00-1cef-11eb-8b56-55acade661f7.png)
+![image](https://user-images.githubusercontent.com/56602504/97829163-26e16800-1cef-11eb-8587-e6e494052323.png)
 ![image](https://user-images.githubusercontent.com/56602504/97829035-be928680-1cee-11eb-85a5-5ba027556809.png)
 ![image](https://user-images.githubusercontent.com/56602504/97829074-d702a100-1cee-11eb-9315-79e1e6be3680.png)
