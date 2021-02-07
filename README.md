@@ -1,6 +1,6 @@
 # COVID-Tracker_App
 
-1.Project Title: COVID-19 Tracker
+1.Project Title: <b>COVID-19 Tracker</b>
 
 2.Gist About the Project: I’ve created an app that provides complete current information about the COVID-19 with regional and worldwide statistics and more.
 
